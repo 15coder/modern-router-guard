@@ -53,7 +53,7 @@ function LoginPage() {
 
           <button
             type="submit"
-            className="bg-gradient-primary mt-2 w-full rounded-2xl py-3.5 font-semibold text-primary-foreground shadow-glow transition-smooth active:scale-[0.98]"
+            className="mt-2 w-full rounded-lg bg-primary py-3.5 font-semibold text-primary-foreground transition-smooth hover:bg-primary/90 active:scale-[0.98]"
           >
             دخول
           </button>
