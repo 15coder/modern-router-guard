@@ -94,14 +94,6 @@ function Dashboard() {
         <Stat icon={Activity} label="مدة التشغيل" value="3" unit="أيام" />
       </div>
 
-      {/* Quick actions */}
-      <h3 className="mb-3 font-display text-base font-semibold text-foreground">إجراءات سريعة</h3>
-      <div className="grid grid-cols-4 gap-3">
-        <QuickAction icon={Users} label="المستخدمون" to="/users" />
-        <QuickAction icon={Wifi} label="الواي فاي" to="/wifi" />
-        <QuickAction icon={Shield} label="الحماية" to="/settings" />
-        <QuickAction icon={Power} label="إعادة تشغيل" to="/settings" />
-      </div>
     </MobileShell>
   );
 }
