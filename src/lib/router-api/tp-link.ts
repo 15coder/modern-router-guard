@@ -266,6 +266,17 @@ export class TpLinkClient implements RouterClient {
     }, true);
   }
 
+  async changeAdminPassword(oldPass: string, newPass: string): Promise<void> {
+    await this.request("/admin/administration", {
+      method: "set",
+      account: {
+        old_password: oldPass,
+        new_password: newPass,
+        confirm_password: newPass,
+      },
+    }, true);
+  }
+
   async getRouterInfo(): Promise<RouterInfo> {
     const result = await this.request("/admin/firmware", {
       method: "get",

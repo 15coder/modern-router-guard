@@ -64,6 +64,13 @@ export class MikrotikClient implements RouterClient {
     await this.get("/system/identity");
   }
 
+  async changeAdminPassword(_oldPass: string, newPass: string): Promise<void> {
+    const users: any[] = await this.get("/user").catch(() => []);
+    const admin = users.find((u) => u.name === this.username);
+    if (!admin) throw new Error("المستخدم غير موجود");
+    await this.patch(`/user/${admin[".id"]}`, { password: newPass });
+  }
+
   async getDevices(): Promise<ConnectedDevice[]> {
     const [arpList, leases, regTable] = await Promise.all([
       this.get("/ip/arp").catch(() => [] as any[]),

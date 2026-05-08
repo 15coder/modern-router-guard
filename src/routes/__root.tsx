@@ -91,6 +91,14 @@ function RootShell({ children }: { children: React.ReactNode }) {
   );
 }
 
+function ThemeApplier() {
+  const { theme } = useConnectionStore();
+  useEffect(() => {
+    document.documentElement.classList.toggle("light", theme === "light");
+  }, [theme]);
+  return null;
+}
+
 function AuthGuard() {
   const { connected, ip, username, password, routerType } = useConnectionStore();
   const nav = useNavigate();
@@ -116,6 +124,7 @@ function RootComponent() {
   return (
     <QueryClientProvider client={queryClient}>
       <SpaceBackground />
+      <ThemeApplier />
       <AuthGuard />
       <Outlet />
     </QueryClientProvider>

@@ -101,6 +101,10 @@ class DemoClient implements RouterClient {
   async getRouterInfo() {
     return { model: "Demo Router", firmware: "v2.0", type: "unknown" as RouterType };
   }
+
+  async changeAdminPassword(_oldPass: string, _newPass: string): Promise<void> {
+    await new Promise((r) => setTimeout(r, 900));
+  }
 }
 
 let _client: RouterClient | null = null;

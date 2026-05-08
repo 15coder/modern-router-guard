@@ -12,6 +12,7 @@ import { Route as rootRouteImport } from './routes/__root'
 import { Route as WifiRouteImport } from './routes/wifi'
 import { Route as UsersRouteImport } from './routes/users'
 import { Route as SettingsRouteImport } from './routes/settings'
+import { Route as NetworkRouteImport } from './routes/network'
 import { Route as LoginRouteImport } from './routes/login'
 import { Route as IndexRouteImport } from './routes/index'
 
@@ -30,6 +31,11 @@ const SettingsRoute = SettingsRouteImport.update({
   path: '/settings',
   getParentRoute: () => rootRouteImport,
 } as any)
+const NetworkRoute = NetworkRouteImport.update({
+  id: '/network',
+  path: '/network',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const LoginRoute = LoginRouteImport.update({
   id: '/login',
   path: '/login',
@@ -44,6 +50,7 @@ const IndexRoute = IndexRouteImport.update({
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/login': typeof LoginRoute
+  '/network': typeof NetworkRoute
   '/settings': typeof SettingsRoute
   '/users': typeof UsersRoute
   '/wifi': typeof WifiRoute
@@ -51,6 +58,7 @@ export interface FileRoutesByFullPath {
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/login': typeof LoginRoute
+  '/network': typeof NetworkRoute
   '/settings': typeof SettingsRoute
   '/users': typeof UsersRoute
   '/wifi': typeof WifiRoute
@@ -59,21 +67,30 @@ export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/login': typeof LoginRoute
+  '/network': typeof NetworkRoute
   '/settings': typeof SettingsRoute
   '/users': typeof UsersRoute
   '/wifi': typeof WifiRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/login' | '/settings' | '/users' | '/wifi'
+  fullPaths: '/' | '/login' | '/network' | '/settings' | '/users' | '/wifi'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/login' | '/settings' | '/users' | '/wifi'
-  id: '__root__' | '/' | '/login' | '/settings' | '/users' | '/wifi'
+  to: '/' | '/login' | '/network' | '/settings' | '/users' | '/wifi'
+  id:
+    | '__root__'
+    | '/'
+    | '/login'
+    | '/network'
+    | '/settings'
+    | '/users'
+    | '/wifi'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   LoginRoute: typeof LoginRoute
+  NetworkRoute: typeof NetworkRoute
   SettingsRoute: typeof SettingsRoute
   UsersRoute: typeof UsersRoute
   WifiRoute: typeof WifiRoute
@@ -102,6 +119,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof SettingsRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/network': {
+      id: '/network'
+      path: '/network'
+      fullPath: '/network'
+      preLoaderRoute: typeof NetworkRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/login': {
       id: '/login'
       path: '/login'
@@ -122,6 +146,7 @@ declare module '@tanstack/react-router' {
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   LoginRoute: LoginRoute,
+  NetworkRoute: NetworkRoute,
   SettingsRoute: SettingsRoute,
   UsersRoute: UsersRoute,
   WifiRoute: WifiRoute,

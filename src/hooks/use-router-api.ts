@@ -8,7 +8,7 @@ export const WIFI_KEY = ["router", "wifi"];
 export const STATS_KEY = ["router", "stats"];
 
 export function useDevices() {
-  const { blockedMacs } = useConnectionStore();
+  const { blockedMacs, deviceAliases } = useConnectionStore();
   return useQuery({
     queryKey: DEVICES_KEY,
     queryFn: async () => {
@@ -16,6 +16,7 @@ export function useDevices() {
       return devices.map((d) => ({
         ...d,
         blocked: blockedMacs.includes(d.mac) || d.blocked,
+        name: deviceAliases[d.mac] || d.name,
       }));
     },
     refetchInterval: 5000,
@@ -84,5 +85,12 @@ export function useUpdateWifi() {
 export function useRestartRouter() {
   return useMutation({
     mutationFn: () => getActiveClient().restartRouter(),
+  });
+}
+
+export function useChangeAdminPassword() {
+  return useMutation({
+    mutationFn: ({ oldPass, newPass }: { oldPass: string; newPass: string }) =>
+      getActiveClient().changeAdminPassword(oldPass, newPass),
   });
 }

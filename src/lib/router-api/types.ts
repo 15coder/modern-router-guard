@@ -61,4 +61,5 @@ export interface RouterClient {
   unblockDevice(mac: string): Promise<void>;
   restartRouter(): Promise<void>;
   getRouterInfo(): Promise<RouterInfo>;
+  changeAdminPassword(oldPass: string, newPass: string): Promise<void>;
 }
