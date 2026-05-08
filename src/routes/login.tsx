@@ -37,7 +37,7 @@ function LoginPage() {
         >
           <Input icon={Wifi} placeholder="عنوان الراوتر" value={ip} onChange={setIp} dir="ltr" />
           <Input placeholder="اسم المستخدم" value={user} onChange={setUser} />
-          <div className="glass flex items-center gap-2 rounded-2xl px-4 py-3.5">
+          <div className="card-formal flex items-center gap-2 px-4 py-3.5">
             <input
               type={show ? "text" : "password"}
               value={pass}
