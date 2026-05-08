@@ -24,17 +24,6 @@ function Stat({ icon: Icon, label, value, unit }: { icon: any; label: string; va
   );
 }
 
-function QuickAction({ icon: Icon, label, to }: { icon: any; label: string; to: string }) {
-  return (
-    <Link to={to} className="card-formal flex flex-col items-center gap-2 p-4 transition-smooth hover:border-primary/40">
-      <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-primary/10 text-primary">
-        <Icon className="h-5 w-5" />
-      </div>
-      <span className="text-xs font-medium text-foreground">{label}</span>
-    </Link>
-  );
-}
-
 function useLive(initial: number, range: number, decimals = 1) {
   const [v, setV] = useState(initial);
   useEffect(() => {
