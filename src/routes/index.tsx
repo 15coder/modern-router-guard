@@ -1,5 +1,5 @@
-import { createFileRoute, Link } from "@tanstack/react-router";
-import { Activity, Download, Upload, Users, Wifi, Shield, Power, RefreshCw } from "lucide-react";
+import { createFileRoute } from "@tanstack/react-router";
+import { Activity, Download, Upload, Users, Shield, RefreshCw } from "lucide-react";
 import { useEffect, useState } from "react";
 import { MobileShell } from "@/components/MobileShell";
 import { Logo } from "@/components/Logo";
@@ -21,17 +21,6 @@ function Stat({ icon: Icon, label, value, unit }: { icon: any; label: string; va
         {unit && <span className="text-xs text-muted-foreground">{unit}</span>}
       </div>
     </div>
-  );
-}
-
-function QuickAction({ icon: Icon, label, to }: { icon: any; label: string; to: string }) {
-  return (
-    <Link to={to} className="card-formal flex flex-col items-center gap-2 p-4 transition-smooth hover:border-primary/40">
-      <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-primary/10 text-primary">
-        <Icon className="h-5 w-5" />
-      </div>
-      <span className="text-xs font-medium text-foreground">{label}</span>
-    </Link>
   );
 }
 
@@ -94,14 +83,6 @@ function Dashboard() {
         <Stat icon={Activity} label="مدة التشغيل" value="3" unit="أيام" />
       </div>
 
-      {/* Quick actions */}
-      <h3 className="mb-3 font-display text-base font-semibold text-foreground">إجراءات سريعة</h3>
-      <div className="grid grid-cols-4 gap-3">
-        <QuickAction icon={Users} label="المستخدمون" to="/users" />
-        <QuickAction icon={Wifi} label="الواي فاي" to="/wifi" />
-        <QuickAction icon={Shield} label="الحماية" to="/settings" />
-        <QuickAction icon={Power} label="إعادة تشغيل" to="/settings" />
-      </div>
     </MobileShell>
   );
 }
