@@ -67,7 +67,7 @@ function LoginPage() {
 
 function Input({ icon: Icon, placeholder, value, onChange, dir }: any) {
   return (
-    <div className="glass flex items-center gap-2 rounded-2xl px-4 py-3.5">
+    <div className="card-formal flex items-center gap-2 px-4 py-3.5">
       {Icon && <Icon className="h-4 w-4 text-muted-foreground" />}
       <input
         value={value}
