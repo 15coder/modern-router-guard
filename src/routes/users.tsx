@@ -36,10 +36,10 @@ function UsersPage() {
       <PageHeader title="المستخدمون" subtitle={`${devices.length} جهاز متصل بالشبكة`} />
 
       {/* Block new toggle */}
-      <div className="glass mb-4 flex items-center justify-between rounded-2xl p-4 shadow-card">
+      <div className="card-formal mb-3 flex items-center justify-between p-4">
         <div className="flex items-center gap-3">
-          <div className="bg-gradient-primary flex h-10 w-10 items-center justify-center rounded-xl">
-            <ShieldAlert className="h-5 w-5 text-primary-foreground" />
+          <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-primary/10 text-primary">
+            <ShieldAlert className="h-5 w-5" />
           </div>
           <div>
             <p className="text-sm font-semibold">حظر المستخدمين الجدد</p>
@@ -48,18 +48,18 @@ function UsersPage() {
         </div>
         <button
           onClick={() => setBlockNew((v) => !v)}
-          className={`relative h-7 w-12 rounded-full transition-smooth ${blockNew ? "bg-gradient-primary" : "bg-muted"}`}
+          className={`relative h-7 w-12 rounded-full border transition-smooth ${blockNew ? "border-primary bg-primary" : "border-border bg-muted"}`}
         >
           <span
-            className={`absolute top-1 h-5 w-5 rounded-full bg-background shadow transition-smooth ${
-              blockNew ? "right-1" : "right-6"
+            className={`absolute top-0.5 h-5 w-5 rounded-full bg-background shadow transition-smooth ${
+              blockNew ? "right-0.5" : "right-[1.625rem]"
             }`}
           />
         </button>
       </div>
 
       {/* Search */}
-      <div className="glass mb-4 flex items-center gap-2 rounded-2xl px-4 py-3">
+      <div className="card-formal mb-4 flex items-center gap-2 px-4 py-3">
         <Search className="h-4 w-4 text-muted-foreground" />
         <input
           value={q}
@@ -70,25 +70,25 @@ function UsersPage() {
       </div>
 
       {/* Devices list */}
-      <div className="space-y-3">
+      <div className="space-y-2">
         {filtered.map((d) => {
           const Icon = icons[d.type];
           return (
-            <div key={d.id} className="glass flex items-center gap-3 rounded-2xl p-3 shadow-card">
-              <div className={`flex h-11 w-11 items-center justify-center rounded-xl ${d.blocked ? "bg-destructive/20 text-destructive" : "bg-primary/15 text-primary"}`}>
+            <div key={d.id} className="card-formal flex items-center gap-3 p-3">
+              <div className={`flex h-11 w-11 items-center justify-center rounded-lg ${d.blocked ? "bg-destructive/15 text-destructive" : "bg-primary/10 text-primary"}`}>
                 <Icon className="h-5 w-5" />
               </div>
               <div className="flex-1 min-w-0">
                 <div className="flex items-center gap-2">
                   <p className="truncate text-sm font-semibold">{d.name}</p>
-                  {d.isNew && <span className="rounded-full bg-primary/20 px-2 py-0.5 text-[10px] text-primary">جديد</span>}
+                  {d.isNew && <span className="rounded-md border border-primary/40 bg-primary/10 px-1.5 py-0.5 text-[10px] text-primary">جديد</span>}
                 </div>
                 <p className="text-xs text-muted-foreground" dir="ltr">{d.ip} · {d.mac}</p>
               </div>
               <button
                 onClick={() => toggle(d.id)}
-                className={`flex h-9 w-9 items-center justify-center rounded-xl transition-smooth active:scale-90 ${
-                  d.blocked ? "bg-primary text-primary-foreground" : "bg-destructive/15 text-destructive"
+                className={`flex h-9 w-9 items-center justify-center rounded-lg transition-smooth active:scale-90 ${
+                  d.blocked ? "bg-primary text-primary-foreground" : "border border-border text-destructive hover:border-destructive/50"
                 }`}
               >
                 {d.blocked ? <CheckCircle2 className="h-5 w-5" /> : <Ban className="h-5 w-5" />}

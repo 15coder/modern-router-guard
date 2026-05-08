@@ -22,8 +22,8 @@ function LoginPage() {
           <div className="mx-auto mb-5 flex justify-center">
             <Logo size={96} />
           </div>
-          <h1 className="font-display text-4xl font-bold tracking-tight">
-            <span className="bg-gradient-primary bg-clip-text text-transparent animate-gradient-shift">سياج</span>
+          <h1 className="font-display text-4xl font-bold tracking-tight text-foreground">
+            سياج
           </h1>
           <p className="mt-2 text-sm text-muted-foreground">تحكّم كامل بالراوتر بأمان</p>
         </div>
@@ -37,7 +37,7 @@ function LoginPage() {
         >
           <Input icon={Wifi} placeholder="عنوان الراوتر" value={ip} onChange={setIp} dir="ltr" />
           <Input placeholder="اسم المستخدم" value={user} onChange={setUser} />
-          <div className="glass flex items-center gap-2 rounded-2xl px-4 py-3.5">
+          <div className="card-formal flex items-center gap-2 px-4 py-3.5">
             <input
               type={show ? "text" : "password"}
               value={pass}
@@ -53,7 +53,7 @@ function LoginPage() {
 
           <button
             type="submit"
-            className="bg-gradient-primary mt-2 w-full rounded-2xl py-3.5 font-semibold text-primary-foreground shadow-glow transition-smooth active:scale-[0.98]"
+            className="mt-2 w-full rounded-lg bg-primary py-3.5 font-semibold text-primary-foreground transition-smooth hover:bg-primary/90 active:scale-[0.98]"
           >
             دخول
           </button>
@@ -67,7 +67,7 @@ function LoginPage() {
 
 function Input({ icon: Icon, placeholder, value, onChange, dir }: any) {
   return (
-    <div className="glass flex items-center gap-2 rounded-2xl px-4 py-3.5">
+    <div className="card-formal flex items-center gap-2 px-4 py-3.5">
       {Icon && <Icon className="h-4 w-4 text-muted-foreground" />}
       <input
         value={value}

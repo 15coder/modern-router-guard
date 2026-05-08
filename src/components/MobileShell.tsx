@@ -16,15 +16,15 @@ export function MobileShell({ children }: { children: ReactNode }) {
       <main className="flex-1 px-5 pb-28 pt-6">{children}</main>
       <nav className="fixed inset-x-0 bottom-0 z-50">
         <div className="mx-auto max-w-md px-4 pb-4">
-          <div className="glass flex items-center justify-around rounded-full px-2 py-2 shadow-card">
+          <div className="glass flex items-center justify-around rounded-xl px-1.5 py-1.5">
             {tabs.map(({ to, icon: Icon, label }) => {
               const active = path === to;
               return (
                 <Link
                   key={to}
                   to={to}
-                  className={`flex flex-1 flex-col items-center gap-1 rounded-full py-2 transition-smooth ${
-                    active ? "bg-gradient-primary text-primary-foreground shadow-glow" : "text-muted-foreground hover:text-foreground"
+                  className={`flex flex-1 flex-col items-center gap-1 rounded-lg py-2 transition-smooth ${
+                    active ? "bg-primary text-primary-foreground" : "text-muted-foreground hover:text-foreground"
                   }`}
                 >
                   <Icon className="h-5 w-5" />
