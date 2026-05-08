@@ -1,6 +1,7 @@
 import { createFileRoute, useNavigate } from "@tanstack/react-router";
 import { useState } from "react";
-import { Shield, Eye, EyeOff, Wifi } from "lucide-react";
+import { Eye, EyeOff, Wifi } from "lucide-react";
+import { Logo } from "@/components/Logo";
 
 export const Route = createFileRoute("/login")({
   component: LoginPage,
@@ -17,12 +18,13 @@ function LoginPage() {
   return (
     <div className="mx-auto flex min-h-screen max-w-md flex-col px-6 py-10">
       <div className="flex flex-1 flex-col justify-center">
-        {/* Logo */}
         <div className="mb-10 text-center">
-          <div className="bg-gradient-primary mx-auto mb-5 flex h-20 w-20 items-center justify-center rounded-3xl shadow-glow">
-            <Shield className="h-10 w-10 text-primary-foreground" />
+          <div className="mx-auto mb-5 flex justify-center">
+            <Logo size={96} />
           </div>
-          <h1 className="font-display text-4xl font-bold tracking-tight">سياج</h1>
+          <h1 className="font-display text-4xl font-bold tracking-tight">
+            <span className="bg-gradient-primary bg-clip-text text-transparent animate-gradient-shift">سياج</span>
+          </h1>
           <p className="mt-2 text-sm text-muted-foreground">تحكّم كامل بالراوتر بأمان</p>
         </div>
 

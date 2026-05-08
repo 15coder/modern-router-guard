@@ -1,6 +1,8 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { Activity, Download, Upload, Users, Wifi, Shield, Power, RefreshCw } from "lucide-react";
+import { useEffect, useState } from "react";
 import { MobileShell } from "@/components/MobileShell";
+import { Logo } from "@/components/Logo";
 
 export const Route = createFileRoute("/")({
   component: Dashboard,
