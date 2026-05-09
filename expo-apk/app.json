@@ -13,8 +13,7 @@
       "backgroundColor": "#0B0D14"
     },
     "assetBundlePatterns": [
-      "**/*",
-      "web-build/**"
+      "**/*"
     ],
     "android": {
       "adaptiveIcon": {
